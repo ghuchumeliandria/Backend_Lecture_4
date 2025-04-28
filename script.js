@@ -116,6 +116,15 @@ Promise.all([fetchApi3, fetchApi4]).then((value) => {
 });
 // 4) Create a function that logs mouse coordinate after mouse stop moving. use debauncer technique.
 
+document.body.addEventListener(
+  "mousemove",
+  debauncer(async (e) => {
+    let x = e.clientX;
+    let y = e.clientY;
+    console.log(x, y);
+  }, 500)
+);
+
 // 5) Create a Input in html, when user typing something on it you should fetch data from this API: https://dummyjson.com/products/search?q=phone as you see there is a products where you can searching something. Replace 'phone' to user typed value and display the result, use debaunce technique to optimize performance.
 
 function debauncer(cb, ms) {
@@ -141,8 +150,11 @@ input.addEventListener(
     );
     let res = await data.json();
     let div = document.getElementById("div");
+    div.innerHTML = "";
     res.products.map((item) => {
-      
+      let div2 = document.createElement("div");
+      div2.innerHTML = `<h1>${item.title}</h1>`;
+      div.appendChild(div2);
     });
-  }, 100)
+  }, 500)
 );

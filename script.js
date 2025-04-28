@@ -142,9 +142,7 @@ input.addEventListener(
     let res = await data.json();
     let div = document.getElementById("div");
     res.products.map((item) => {
-      let div2 = document.createElement("div");
-      div2.innerHTML = `<h1>${item.title}</h1>`;
-      div.appendChild(div2);
+      
     });
   }, 100)
 );
